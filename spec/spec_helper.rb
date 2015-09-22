@@ -1,6 +1,11 @@
 require 'rspec'
-require 'sidekiq-approval'
-#require 'sidekiq-scheduler'
+require 'sidekiqapproval'
+require 'pry'
+require 'sidekiq/testing'
+
+Sidekiq::Testing.server_middleware do |chain|
+  chain.add Sidekiq::Approval
+end
 
 def start_redis
   redis_config = <<END
@@ -14,7 +19,6 @@ END
     server.write(redis_config)
     server.close_write
   end
-  Resque.redis = "localhost:#{redis_port}"
 
   sleep 0.1 # give Redis time to start
 
