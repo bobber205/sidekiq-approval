@@ -1,6 +1,5 @@
 require 'rspec'
-require 'sidekiqapproval'
-require 'pry'
+require 'sidekiq-approval'
 require 'sidekiq/testing'
 
 Sidekiq::Testing.server_middleware do |chain|
@@ -44,12 +43,12 @@ def redis_pid
   File.exist?(redis_pid_file) && File.read(redis_pid_file).to_i
 end
 
-RSpec.configure do |config|
-  config.before(:suite) do
-    start_redis
-  end
+#RSpec.configure do |config|
+  #config.before(:suite) do
+    #start_redis
+  #end
 
-  config.after(:suite) do
-    stop_redis
-  end
-end
+  #config.after(:suite) do
+    #stop_redis
+  #end
+#end
