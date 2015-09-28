@@ -5,7 +5,7 @@ require 'sidekiq-approval/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sidekiq-approval"
-  spec.version       = Sidekiq::Plugins::Approval::VERSION
+  spec.version       = Sidekiq::Approval::VERSION
   spec.authors       = ["Mac Martine"]
   spec.email         = ["mac.martine@gmail.com"]
   spec.summary       = %q{Adds an optional approval process to Sidekiq jobs.}
